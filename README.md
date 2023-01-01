@@ -7,23 +7,23 @@ ex. 3 + (4 - 5)
 
 Use it like this:
 If you input
-> 3 * (22 - 14) + 2 * (3 * 2)
+3 * (22 - 14) + 2 * (3 * 2)
 The result will come back as
-> 36
+36
 
 How it works:
 When you input
-> 3 * (22 - 14) + 2 * (3 * 2)
+3 * (22 - 14) + 2 * (3 * 2)
 The function first takes a substring containing the insides of each bracket,
 and reccursively passes that into itself,
 and raplaces the bracket in the input string with the result.
 (22 - 14) becomes 8, and (3 * 2) becomes 6.
 With the input string becoming "3 * 8 + 2 * 6".
 And then it calculates the end result
-> 36
+36
 
 When the input has brackets within other brackets
-> 3 * (22 - (10 + 4))
+3 * (22 - (10 + 4))
 It will similarly take the insides of the bracket (22 - (10 + 4))
 and reccursively pass that into itself.
 The input string in the new function is now 22 - (10 + 4).
@@ -33,7 +33,7 @@ it will replace (22 - 14) with 8.
 Which gets us back to the original function where
 the input string is now 3 * 8,
 returning the end result of
->24
+24
 
 The reason that brackets equating to negative numbers are a problem is
 because when the bracket is replaced with its result,
