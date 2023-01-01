@@ -108,22 +108,25 @@ void getNums(string s, float arr[]) {
 	// places just the numbers from the input string into the array arr
 	int l = s.length();
 	int i = 0, last = 0, count = 0;
+	bool nextNeg = false;
 	string b;
 
 	while (i <= l) {
-		if (s[i] == '+' || s[i] == '*' || s[i] == '/' || i == l) {
+		if (s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/' || i == l) {
 			b = s.substr(last, i - last);
 			replace(b, " ", "");
-			arr[count] = stof(b);
+			if (nextNeg) {
+				arr[count] = -stof(b);
+				nextNeg = false;
+			}
+			else {
+				arr[count] = stof(b);
+			}
 			last = i + 1;
 			count++;
 		}
-		else if (s[i] == '-') {
-			b = s.substr(last, i - last);
-			replace(b, " ", "");
-			arr[count] = -stof(b);
-			last = i + 1;
-			count++;
+		if (s[i] == '-') {
+			nextNeg = true;
 		}
 		i++;
 	}
